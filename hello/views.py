@@ -8,7 +8,7 @@ from langdetect import detect
 
 from .models import Greeting
 
-# Create your views here.
+# Create your views here.hhhhhh
 def index(request):
     # return HttpResponse('Hello from Python!')
     payload = str(request.body, encoding='utf-8')
