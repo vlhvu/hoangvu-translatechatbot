@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import pychatwork as ch
-from django.views.decorators.csrf import csrf_exempt
-import json
-from googletrans import Translator
-from langdetect import detect
-
 from .models import Greeting
+
+from googletrans import Translator
+from django.views.decorators.csrf import csrf_exempt
+from langdetect import detect
+import json
+import pychatwork as ch
+
+
+
 
 # Create your views here.
 def index(request):
