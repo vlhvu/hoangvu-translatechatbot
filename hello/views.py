@@ -38,11 +38,11 @@ def chatwork_webhook(request):
     messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
 
     translator = Translator()
-    lang = detect(messageChat)
+    lang = detect(messageChat1)
     locale = "vi"
     if lang == "vi":
         locale = "ja"
-    translated = translator.translate(messageChat, src=lang, dest=locale)
+    translated = translator.translate(messageChat1, src=lang, dest=locale)
     #Send Data back to chatwork
     client = ch.ChatworkClient('fd0602c43dd83cae39e7ebfb08d5793d')
     # get message from room 1234
