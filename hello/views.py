@@ -8,16 +8,11 @@ from langdetect import detect
 import json
 import pychatwork as ch
 
-
-
-
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
     payload = str(request.body, encoding='utf-8')
     return render(request, "index.html")
-
-
 def db(request):
 
     greeting = Greeting()
@@ -38,9 +33,9 @@ def chatwork_webhook(request):
     messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
 
     translator = Translator()
-    lang = detect(messageChat1)
+    #lang = detect(messageChat1)
 
-    locale = "vi"
+    #locale = "vi"
     if lang == "vi":
         locale = "ja"
     translated = translator.translate(messageChat1, src=lang, dest=locale)
