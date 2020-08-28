@@ -31,11 +31,12 @@ def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
     messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
+    messageChat2 = messageChat1.replace("translated","")
 
     translator = Translator()
-    #lang = detect(messageChat1)
+    lang = detect(messageChat1)
 
-    #locale = "vi"
+    locale = "vi"
     if lang == "vi":
         locale = "ja"
     translated = translator.translate(messageChat1, src=lang, dest=locale)
