@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from langdetect import detect
 import json
 import pychatwork as ch
+import re
 
 # Create your views here.
 def index(request):
@@ -32,6 +33,8 @@ def chatwork_webhook(request):
 
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
+
+    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
 
     print('request from client')
     print(payload)
