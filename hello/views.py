@@ -33,7 +33,7 @@ def chatwork_webhook(request):
     print(messageChat)
     # messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
 
-    if "\0" in messageChat:
+    if "\t" in messageChat:
         return HttpResponse('Webhook received', status=200)
 
     translator = Translator()
@@ -42,7 +42,7 @@ def chatwork_webhook(request):
     locale = "vi"
     if lang == "vi":
         locale = "ja"
-    translated = translator.translate(messageChat, src=lang, dest=locale).text + "\0"
+    translated = translator.translate(messageChat, src=lang, dest=locale).text + "\t"
 
     #Send Data back to chatwork
     client = ch.ChatworkClient('fd0602c43dd83cae39e7ebfb08d5793d')
