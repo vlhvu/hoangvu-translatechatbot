@@ -30,8 +30,9 @@ def decode_payload(request):
 def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
-    # print(messageChat)
-    print(messageChat)
+
+    print('request from client')
+    print(payload)
     # messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
 
     if "#translated: " in messageChat:
