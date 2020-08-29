@@ -28,14 +28,16 @@ def decode_payload(request):
 
 @csrf_exempt
 def chatwork_webhook(request):
+    ACCOUNT_ID_BOT = 5130876
+
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
     print('request from client')
     print(payload)
-    # messageChat1 = messageChat.replace("[To:5130876]Bot_Translate","")
 
-    if "#translated: " in messageChat:
+    accountId = payload["webhook_event"]["account_id"]
+    if accountId == ACCOUNT_ID_BOT:
         return HttpResponse('Webhook received', status=200)
 
     translator = Translator()
@@ -44,7 +46,7 @@ def chatwork_webhook(request):
     locale = "vi"
     if lang == "vi":
         locale = "ja"
-    translated = "#translated: " + translator.translate(messageChat, src=lang, dest=locale).text
+    translated = translator.translate(messageChat, src=lang, dest=locale).text
 
     #Send Data back to chatwork
     client = ch.ChatworkClient('fd0602c43dd83cae39e7ebfb08d5793d')
