@@ -30,7 +30,7 @@ def decode_payload(request):
 @csrf_exempt
 def chatwork_webhook(request):
     ACCOUNT_ID_BOT = 1234567
-    NAME_BOT = abcdefghijklmnopqrstuvwxyz
+    NAME_BOT = "abcdefghijklmnopqrstuvwxyz"
 
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
