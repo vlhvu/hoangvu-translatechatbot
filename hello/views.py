@@ -38,8 +38,6 @@ def chatwork_webhook(request):
 
     print('request from client')
     print(payload)
-    #test name
-    messageChat = re.sub('[a-z]*@', 'ABC@', messageChat)
 
     accountId = payload["webhook_event"]["account_id"]
     if accountId == ACCOUNT_ID_BOT:
