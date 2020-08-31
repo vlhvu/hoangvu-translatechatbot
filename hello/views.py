@@ -35,6 +35,7 @@ def chatwork_webhook(request):
     messageChat = payload["webhook_event"]["body"]
 
     messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
+    result = re.sub('hwe',  '',    messageChat)           # Delete pattern abc
 
     print('request from client')
     print(payload)
