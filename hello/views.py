@@ -30,17 +30,24 @@ def decode_payload(request):
 @csrf_exempt
 def chatwork_webhook(request):
     ACCOUNT_ID_BOT = 1234567
+    NAME_BOT = a b c d e f g h i j k l m n o p q r s t u v w x y z
 
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
     messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
+    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d)\]', '', messageChat)
 
     print('request from client')
     print(payload)
-
+    #id
     accountId = payload["webhook_event"]["account_id"]
     if accountId == ACCOUNT_ID_BOT:
+        return HttpResponse('Webhook received', status=200)
+
+    #name
+    nameId = payload["webhook_event"]["name_id"]
+    if nameId == NAME_BOT:
         return HttpResponse('Webhook received', status=200)
 
     translator = Translator()
