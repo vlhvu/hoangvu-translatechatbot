@@ -43,6 +43,23 @@ def chatwork_webhook(request):
     if accountId == ACCOUNT_ID_BOT:
         return HttpResponse('Webhook received', status=200)
 
+    messageChat = "[To:5118754]hwe"
+
+#Check if the string has any characters from a to z lower case, and A to Z upper case:
+
+    x = re.findall("[a-zA-Z]", messageChat)
+
+    print(x)
+
+    if x:
+        print("Yes, there is at least one match!")
+    else:
+        print("No match")
+
+
+
+
+
     translator = Translator()
     lang = detect(messageChat)
 
