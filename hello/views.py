@@ -37,9 +37,9 @@ def chatwork_webhook(request):
     #messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
     check = "messageChat"
     stringDefault="hwe"
-    messageChat =""
+    messageChat2 =""
     if check in stringDefault:
-    	messageChat = messageChat + stringDefault
+    	messageChat2 = messageChat2 + stringDefault
 
     messageChat2 = messageChat.replace("messageChat", "")
 
