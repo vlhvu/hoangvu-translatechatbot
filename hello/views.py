@@ -35,7 +35,7 @@ def chatwork_webhook(request):
     messageChat = payload["webhook_event"]["body"]
 
     messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
-    messageChat2 = messageChat.replace(messageChat, "")
+    messageChat2 = messageChat.replace(messageChat, "xin chào")
 
     print('request from client')
     print(payload)
