@@ -34,16 +34,7 @@ def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
-    messageChat2 = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat2)
-    check = "messageChat"
-    stringDefault="hwe"
-    messageChat2 =""
-    if check in stringDefault:
-    	messageChat2 = messageChat2 + stringDefault
-
-    messageChat2 = messageChat.replace("messageChat", "")
-
-
+    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
 
     print('request from client')
     print(payload)
@@ -53,12 +44,12 @@ def chatwork_webhook(request):
         return HttpResponse('Webhook received', status=200)
 
     translator = Translator()
-    lang = detect(messageChat2)
+    lang = detect(messageChat)
 
     locale = "vi"
     if lang == "vi":
         locale = "ja"
-    translated = translator.translate(messageChat2, src=lang, dest=locale).text
+    translated = translator.translate(messageChat, src=lang, dest=locale).text
 
     #Send Data back to chatwork
     client = ch.ChatworkClient('fd0602c43dd83cae39e7ebfb08d5793d')
