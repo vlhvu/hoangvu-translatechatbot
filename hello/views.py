@@ -34,15 +34,23 @@ def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
-    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
-    messageChat2 = messageChat.replace(messageChat, "xin chào")
+    #messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
+    check = "messageChat"
+    stringDefault="hwe"
+    messageChat =""
+    if check in stringDefault:
+    	messageChat = messageChat + stringDefault
+
+    messageChat2 = messageChat.replace("messageChat", "")
+
+
 
     print('request from client')
     print(payload)
 
-    accountId = payload["webhook_event"]["account_id"]
-    if accountId == ACCOUNT_ID_BOT:
-        return HttpResponse('Webhook received', status=200)
+    #accountId = payload["webhook_event"]["account_id"]
+    #if accountId == ACCOUNT_ID_BOT:
+    #    return HttpResponse('Webhook received', status=200)
 
     translator = Translator()
     lang = detect(messageChat2)
