@@ -34,7 +34,7 @@ def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
-    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
+    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]?hwe', '', messageChat)
 
     print('request from client')
     print(payload)
