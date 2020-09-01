@@ -34,7 +34,23 @@ def chatwork_webhook(request):
     payload = decode_payload(request)
     messageChat = payload["webhook_event"]["body"]
 
-    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]?hwe', '', messageChat)
+    messageChat = re.sub(r'\[To:(\d\d\d\d\d\d\d)\]', '', messageChat)
+
+#amm = "vo lam hoang vu(IVS-CTO)"
+check = "(IVS)"
+check2 ="(IVS-CTO)"
+stringDefault= messageChat
+messageChat =""
+if check in stringDefault:
+	messageChat = messageChat + stringDefault
+#	print(messageChat)
+if check2 in stringDefault:
+	messageChat= messageChat + stringDefault
+#	print(messageChat)
+messageChat = messageChat.replace(messageChat, "")
+#print(x)
+
+
 
     print('request from client')
     print(payload)
