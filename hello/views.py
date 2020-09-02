@@ -40,6 +40,7 @@ def chatwork_webhook(request):
     if not CHECK in messageChat:
         return HttpResponse('Webhook received', status=200)
 
+    messageChat = messageChat.replace(CHECK,"")
     accountId = payload["webhook_event"]["account_id"]
     if accountId == ACCOUNT_ID_BOT:
         return HttpResponse('Webhook received', status=200)
